@@ -5,10 +5,11 @@ BarterItem.destroy_all
 Barter.destroy_all
 
 #User data
-rob = User.find_or_create_by(name: "Rob", email: "rob@gmail.com")
-alyssa = User.find_or_create_by(name: "Alyssa", email: "alyssa@gmail.com")
-cal = User.find_or_create_by(name: "Cal", email: "cal@gmail.com")
-chris = User.find_or_create_by(name: "Chris", email: "chris@gmail.com")
+rob = User.find_or_create_by(name: "Rob", username: "robocop", email: "rob@gmail.com", password_digest: "1234", prof_pic: "http://placeimg.com/300/301/people")
+alyssa = User.find_or_create_by(name: "Alyssa", username: "aliza", email: "alyssa@gmail.com", password_digest: "1234", prof_pic: "http://placeimg.com/300/302/people")
+cal = User.find_or_create_by(name: "Cal", username: "calZone", email: "cal@gmail.com", password_digest: "1234", prof_pic: "http://placeimg.com/300/303/people")
+chris = User.find_or_create_by(name: "Chris", username: "bimmer", email: "chris@gmail.com", password_digest: "1234", prof_pic: "http://placeimg.com/300/304/people")
+
 
 #Item data
 back = Item.find_or_create_by(user: rob, name: "Back To The Future DVD", image_url: "https://images-na.ssl-images-amazon.com/images/I/91-ts%2BM8slL._SL1500_.jpg", views: 0)
@@ -17,6 +18,46 @@ necklace = Item.find_or_create_by(user: alyssa, name: "Bling Bling Ice", image_u
 choco = Item.find_or_create_by(user: cal, name: "Chocko Milk!", image_url: "https://www.vaporfi.com/media/catalog/product/cache/9/thumbnail/600x600/9df78eab33525d08d6e5fb8d27136e95/c/h/choc_milk.jpg", views: 1)
 blackshirt = Item.find_or_create_by(user: chris, name: "Black Shirt", image_url: "https://hips.hearstapps.com/vader-prod.s3.amazonaws.com/1544480562-buck-mason-black-crew-slub-750x750-thumb-3062c830-6255-4772-a6f2-0722256fda92-1000x1000-1544480553.jpg", views: 900)
 grapple = Item.find_or_create_by(user: alyssa, name: "Batman Hook", image_url: "https://images-na.ssl-images-amazon.com/images/I/61GeFVpGl1L._SL1200_.jpg", views: 777)
+
+size = 348
+5.times do
+  Item.create(
+    user: chris,
+    name: Faker::Commerce.product_name,
+    image_url: "http://placeimg.com/350/" +"#{size}" + "/tech"
+  )
+  size = size + 1
+end
+
+size = 348
+5.times do
+  Item.create(
+    user: cal,
+    name: Faker::Commerce.product_name,
+    image_url: "http://placeimg.com/350/#{size}/nature"
+  )
+  size = size + 1
+end
+
+size = 348
+5.times do
+  Item.create(
+    user: rob,
+    name: Faker::Commerce.product_name,
+    image_url: "http://placeimg.com/350/#{size}/animals"
+  )
+  size = size + 1
+end
+
+size = 348
+5.times do
+  Item.create(
+    user: alyssa,
+    name: Faker::Commerce.product_name,
+    image_url: "http://placeimg.com/350/#{size}/arch"
+  )
+  size = size + 1
+end
 
 #Barter and associations
 barter1 = Barter.find_or_create_by(description: "Respectfully request Grappling Hook", message: "My rare FF3 and DVD for your hook!", sender: rob, recipient: alyssa)
