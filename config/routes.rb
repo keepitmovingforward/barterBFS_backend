@@ -7,4 +7,5 @@ Rails.application.routes.draw do
   post "/items", to: "items#index"
   patch "/items/:id", to: "items#update"
   delete "/items/:id", to: "items#destroy"
+  post "/login", to: "users#verify"
 end

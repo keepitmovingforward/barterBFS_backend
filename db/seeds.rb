@@ -4,11 +4,16 @@ Item.destroy_all
 BarterItem.destroy_all
 Barter.destroy_all
 
+def User.digest(string)
+  cost = ActiveModel::SecurePassword.min_cost ? BCrypt::Engine::MIN_COST :
+                                                BCrypt::Engine.cost
+  BCrypt::Password.create(string, cost: cost)
+end
 #User data
-rob = User.find_or_create_by(name: "Rob", username: "robocop", email: "rob@gmail.com", password_digest: "1234", prof_pic: "http://placeimg.com/300/301/people")
-alyssa = User.find_or_create_by(name: "Alyssa", username: "aliza", email: "alyssa@gmail.com", password_digest: "1234", prof_pic: "http://placeimg.com/300/302/people")
-cal = User.find_or_create_by(name: "Cal", username: "calZone", email: "cal@gmail.com", password_digest: "1234", prof_pic: "http://placeimg.com/300/303/people")
-chris = User.find_or_create_by(name: "Chris", username: "bimmer", email: "chris@gmail.com", password_digest: "1234", prof_pic: "http://placeimg.com/300/304/people")
+rob = User.find_or_create_by(name: "Rob", username: "robocop", email: "rob@gmail.com", password_digest: "#{User.digest("1234")}", prof_pic: "http://placeimg.com/300/301/people")
+alyssa = User.find_or_create_by(name: "Alyssa", username: "aliza", email: "alyssa@gmail.com", password_digest: "#{User.digest("1234")}", prof_pic: "http://placeimg.com/300/302/people")
+cal = User.find_or_create_by(name: "Cal", username: "calZone", email: "cal@gmail.com", password_digest: "#{User.digest("1234")}", prof_pic: "http://placeimg.com/300/303/people")
+chris = User.find_or_create_by(name: "Chris", username: "bimmer", email: "chris@gmail.com", password_digest: "#{User.digest("1234")}", prof_pic: "http://placeimg.com/300/304/people")
 
 
 #Item data
@@ -19,8 +24,8 @@ choco = Item.find_or_create_by(user: cal, name: "Chocko Milk!", image_url: "http
 blackshirt = Item.find_or_create_by(user: chris, name: "Black Shirt", image_url: "https://hips.hearstapps.com/vader-prod.s3.amazonaws.com/1544480562-buck-mason-black-crew-slub-750x750-thumb-3062c830-6255-4772-a6f2-0722256fda92-1000x1000-1544480553.jpg", views: 900)
 grapple = Item.find_or_create_by(user: alyssa, name: "Batman Hook", image_url: "https://images-na.ssl-images-amazon.com/images/I/61GeFVpGl1L._SL1200_.jpg", views: 777)
 
-size = 348
-5.times do
+size = 347
+7.times do
   Item.create(
     user: chris,
     name: Faker::Commerce.product_name,
@@ -29,8 +34,8 @@ size = 348
   size = size + 1
 end
 
-size = 348
-5.times do
+size = 347
+7.times do
   Item.create(
     user: cal,
     name: Faker::Commerce.product_name,
@@ -39,8 +44,8 @@ size = 348
   size = size + 1
 end
 
-size = 348
-5.times do
+size = 347
+7.times do
   Item.create(
     user: rob,
     name: Faker::Commerce.product_name,
@@ -49,8 +54,8 @@ size = 348
   size = size + 1
 end
 
-size = 348
-5.times do
+size = 347
+7.times do
   Item.create(
     user: alyssa,
     name: Faker::Commerce.product_name,
