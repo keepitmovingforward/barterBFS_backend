@@ -29,7 +29,8 @@ size = 347
   Item.create(
     user: chris,
     name: Faker::Commerce.product_name,
-    image_url: "http://placeimg.com/350/" +"#{size}" + "/tech"
+    image_url: "http://placeimg.com/350/" +"#{size}" + "/tech",
+    views: 0
   )
   size = size + 1
 end
@@ -39,7 +40,8 @@ size = 347
   Item.create(
     user: cal,
     name: Faker::Commerce.product_name,
-    image_url: "http://placeimg.com/350/#{size}/nature"
+    image_url: "http://placeimg.com/350/#{size}/nature",
+    views: 0
   )
   size = size + 1
 end
@@ -49,7 +51,8 @@ size = 347
   Item.create(
     user: rob,
     name: Faker::Commerce.product_name,
-    image_url: "http://placeimg.com/350/#{size}/animals"
+    image_url: "http://placeimg.com/350/#{size}/animals",
+    views: 0
   )
   size = size + 1
 end
@@ -59,21 +62,22 @@ size = 347
   Item.create(
     user: alyssa,
     name: Faker::Commerce.product_name,
-    image_url: "http://placeimg.com/350/#{size}/arch"
+    image_url: "http://placeimg.com/350/#{size}/arch",
+    views: 0
   )
   size = size + 1
 end
 
 #Barter and associations
-barter1 = Barter.find_or_create_by(description: "Respectfully request Grappling Hook", message: "My rare FF3 and DVD for your hook!", sender: rob, recipient: alyssa)
+barter1 = Barter.find_or_create_by(description: "Respectfully request Grappling Hook", message: "My rare FF3 and DVD for your hook!", sender: rob, recipient: alyssa, barter_status: 'requested')
 BarterItem.find_or_create_by(barter: barter1, item: ff3)
 BarterItem.find_or_create_by(barter: barter1, item: back)
 BarterItem.find_or_create_by(barter: barter1, item: grapple)
 
-barter2 = Barter.find_or_create_by(description: "Blackshirt is nice", message: "Offering my prized chocko milk", sender: cal, recipient: chris)
+barter2 = Barter.find_or_create_by(description: "Blackshirt is nice", message: "Offering my prized chocko milk", sender: cal, recipient: chris, barter_status: 'requested')
 BarterItem.find_or_create_by(barter: barter2, item: choco)
 BarterItem.find_or_create_by(barter: barter2, item: blackshirt)
 
-barter3 = Barter.find_or_create_by(description: "Need some ice", message: "Blackshirt for bling", sender: chris, recipient: alyssa)
+barter3 = Barter.find_or_create_by(description: "Need some ice", message: "Blackshirt for bling", sender: chris, recipient: alyssa, barter_status: 'requested')
 BarterItem.find_or_create_by(barter: barter3, item: blackshirt)
 BarterItem.find_or_create_by(barter: barter3, item: necklace)

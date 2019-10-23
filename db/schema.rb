@@ -27,6 +27,7 @@ ActiveRecord::Schema.define(version: 2019_10_17_155441) do
     t.string "message"
     t.integer "sender_id"
     t.integer "recipient_id"
+    t.string "barter_status"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
   end

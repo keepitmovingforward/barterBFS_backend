@@ -5,6 +5,7 @@ class CreateBarters < ActiveRecord::Migration[6.0]
       t.string :message
       t.integer :sender_id
       t.integer :recipient_id
+      t.string :barter_status
 
       t.timestamps
     end
